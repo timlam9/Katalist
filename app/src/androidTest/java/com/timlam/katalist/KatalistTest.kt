@@ -11,13 +11,16 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.timlam.katalist.domain.KatasRepository
+import com.timlam.katalist.presentation.KataAdapter
+import com.timlam.katalist.presentation.MainActivity
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class KatalistTest {
 
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
@@ -34,7 +37,7 @@ class ExampleInstrumentedTest {
     }
 
     @Test
-    fun starting_the_app_show_the_list_of_katas() {
+    fun starting_the_app_shows_the_list_of_katas() {
 
         isViewShown(R.id.list_kata)
     }

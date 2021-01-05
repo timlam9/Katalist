@@ -1,4 +1,4 @@
-package com.timlam.katalist
+package com.timlam.katalist.domain.models
 
 import java.io.Serializable
 

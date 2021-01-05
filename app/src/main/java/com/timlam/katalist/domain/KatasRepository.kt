@@ -1,4 +1,7 @@
-package com.timlam.katalist
+package com.timlam.katalist.domain
+
+import com.timlam.katalist.R
+import com.timlam.katalist.domain.models.Kata
 
 object KatasRepository {
 

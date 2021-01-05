@@ -1,8 +1,10 @@
-package com.timlam.katalist
+package com.timlam.katalist.presentation
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.timlam.katalist.R
+import com.timlam.katalist.domain.models.Kata
 import kotlinx.android.synthetic.main.fragment_details.view.*
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {

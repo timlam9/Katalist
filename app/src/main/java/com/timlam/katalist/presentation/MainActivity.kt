@@ -1,12 +1,14 @@
-package com.timlam.katalist
+package com.timlam.katalist.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.timlam.katalist.KatasRepository.katas
+import com.timlam.katalist.R
+import com.timlam.katalist.domain.KatasRepository.katas
+import com.timlam.katalist.domain.models.Kata
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), KataItemClickListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var kataAdapter: KataAdapter
 
@@ -14,7 +16,7 @@ class MainActivity : AppCompatActivity(), KataItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        kataAdapter = KataAdapter(katas, this)
+        kataAdapter = KataAdapter(katas, this::onKataClicked)
 
         list_kata.apply {
             adapter = kataAdapter
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity(), KataItemClickListener {
 
     }
 
-    override fun onKataClicked(kata: Kata) {
+    private fun onKataClicked(kata: Kata) {
         val detailsFragment = DetailsFragment.newInstance(kata)
 
         supportFragmentManager
