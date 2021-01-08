@@ -57,15 +57,34 @@ class RoverTests {
         assertEquals("2:3:N", finalPosition)
     }
 
+    @Test
+    @Parameters(
+        "MMMMMMMMMM, 0:0:N",
+        "RMMMMMMMMMM, 0:0:E",
+        "RRMMMMMMMMMM, 0:0:S",
+        "RRRMMMMMMMMMM, 0:0:W",
+        "MMMMMMMMMLLMMMMMMMMMM, 0:9:S",
+    )
+    fun `wraps around if it reaches the end of the grid`(
+        command: String,
+        position: String
+    ) {
+        val finalPosition = rover.execute("MMMMMMMMMM")
+
+        assertEquals("0:0:N", finalPosition)
+    }
+
 }
 
 class MarsRover {
 
     companion object {
 
+        private const val GRID_HEIGHT = 10
+        private const val GRID_WIDTH = 10
+
         private const val RIGHT_COMMAND = 'R'
         private const val LEFT_COMMAND = 'L'
-        private const val MOVE_COMMAND = 'M'
 
     }
 
@@ -89,19 +108,11 @@ class MarsRover {
             coordinates = when (singleCommand) {
                 RIGHT_COMMAND -> coordinates.copy(direction = Direction.values()[findIndex(true)])
                 LEFT_COMMAND -> coordinates.copy(direction = Direction.values()[findIndex(false)])
-                else -> {
-                    when (coordinates.direction) {
-                        Direction.North -> coordinates.copy(y = coordinates.y + 1)
-                        Direction.East -> coordinates.copy(x = coordinates.x + 1)
-                        Direction.South -> coordinates.copy(y = coordinates.y - 1)
-                        Direction.West -> coordinates.copy(x = coordinates.y + 1)
-                    }
-                }
+                else -> move()
             }
         }
 
         return coordinates.currentPosition()
-
     }
 
     private fun findIndex(clockWise: Boolean): Int {
@@ -109,6 +120,15 @@ class MarsRover {
             if (coordinates.direction.ordinal != Direction.values().size - 1) coordinates.direction.ordinal + 1 else 0
         } else {
             if (coordinates.direction.ordinal != 0) coordinates.direction.ordinal - 1 else Direction.values().size - 1
+        }
+    }
+
+    private fun move(): Coordinates {
+        return when (coordinates.direction) {
+            Direction.North -> coordinates.copy(y = if (coordinates.y == GRID_HEIGHT - 1) 0 else coordinates.y + 1)
+            Direction.East -> coordinates.copy(x = if (coordinates.x == GRID_WIDTH - 1) 0 else coordinates.x + 1)
+            Direction.South -> coordinates.copy(y = if (coordinates.y == 0) GRID_HEIGHT - 1 else coordinates.y - 1)
+            Direction.West -> coordinates.copy(x = if (coordinates.x == 0) GRID_WIDTH - 1 else coordinates.x - 1)
         }
     }
 
