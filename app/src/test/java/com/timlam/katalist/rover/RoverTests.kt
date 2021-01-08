@@ -74,63 +74,12 @@ class RoverTests {
         assertEquals("0:0:N", finalPosition)
     }
 
-}
+    @Test
+    fun `adds a zero prefix when finding an obstacle on a move command`() {
+        val rover = MarsRover(Grid(obstacles = listOf(MarsRover.Coordinates(0, 3))))
+        val finalPosition = rover.execute("MMM")
 
-class MarsRover {
-
-    companion object {
-
-        private const val GRID_HEIGHT = 10
-        private const val GRID_WIDTH = 10
-
-        private const val RIGHT_COMMAND = 'R'
-        private const val LEFT_COMMAND = 'L'
-
+        assertEquals("0:0:2:N", finalPosition)
     }
-
-    enum class Direction {
-        North,
-        East,
-        South,
-        West
-    }
-
-    data class Coordinates(val x: Int = 0, val y: Int = 0, val direction: Direction = Direction.North) {
-
-        fun currentPosition() = "$x:$y:${direction.name.first()}"
-
-    }
-
-    private var coordinates = Coordinates()
-
-    fun execute(command: String): String {
-        command.forEach { singleCommand ->
-            coordinates = when (singleCommand) {
-                RIGHT_COMMAND -> coordinates.copy(direction = Direction.values()[findIndex(true)])
-                LEFT_COMMAND -> coordinates.copy(direction = Direction.values()[findIndex(false)])
-                else -> move()
-            }
-        }
-
-        return coordinates.currentPosition()
-    }
-
-    private fun findIndex(clockWise: Boolean): Int {
-        return if (clockWise) {
-            if (coordinates.direction.ordinal != Direction.values().size - 1) coordinates.direction.ordinal + 1 else 0
-        } else {
-            if (coordinates.direction.ordinal != 0) coordinates.direction.ordinal - 1 else Direction.values().size - 1
-        }
-    }
-
-    private fun move(): Coordinates {
-        return when (coordinates.direction) {
-            Direction.North -> coordinates.copy(y = if (coordinates.y == GRID_HEIGHT - 1) 0 else coordinates.y + 1)
-            Direction.East -> coordinates.copy(x = if (coordinates.x == GRID_WIDTH - 1) 0 else coordinates.x + 1)
-            Direction.South -> coordinates.copy(y = if (coordinates.y == 0) GRID_HEIGHT - 1 else coordinates.y - 1)
-            Direction.West -> coordinates.copy(x = if (coordinates.x == 0) GRID_WIDTH - 1 else coordinates.x - 1)
-        }
-    }
-
 
 }
