@@ -29,7 +29,7 @@ class MarsRover(private val grid: Grid = Grid()) {
             }
         }
 
-        return coordinates.currentPosition(direction.name.first(), obstaclePrefix)
+        return "$obstaclePrefix${coordinates.x}:${coordinates.y}:${direction.name.first()}"
     }
 
     private fun findIndex(clockWise: Boolean): Int {
