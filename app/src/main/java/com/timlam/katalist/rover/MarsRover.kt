@@ -17,29 +17,36 @@ class MarsRover(private val grid: Grid = Grid()) {
     }
 
     private var coordinates = Coordinates()
+    private var direction = Direction.North
 
     fun execute(command: String): String {
         command.forEach { singleCommand ->
             coordinates = when (singleCommand) {
-                RIGHT_COMMAND -> coordinates.copy(direction = Direction.values()[findIndex(true)])
-                LEFT_COMMAND -> coordinates.copy(direction = Direction.values()[findIndex(false)])
+                RIGHT_COMMAND -> {
+                    direction = Direction.values()[findIndex(true)]
+                    coordinates
+                }
+                LEFT_COMMAND -> {
+                    direction = Direction.values()[findIndex(false)]
+                    coordinates
+                }
                 else -> move()
             }
         }
 
-        return coordinates.currentPosition()
+        return coordinates.currentPosition(direction.name.first())
     }
 
     private fun findIndex(clockWise: Boolean): Int {
         return if (clockWise) {
-            if (coordinates.direction.ordinal != Direction.values().size - 1) coordinates.direction.ordinal + 1 else 0
+            if (direction.ordinal != Direction.values().size - 1) direction.ordinal + 1 else 0
         } else {
-            if (coordinates.direction.ordinal != 0) coordinates.direction.ordinal - 1 else Direction.values().size - 1
+            if (direction.ordinal != 0) direction.ordinal - 1 else Direction.values().size - 1
         }
     }
 
     private fun move(): Coordinates {
-        val (x, y) = when (coordinates.direction) {
+        val (x, y) = when (direction) {
             Direction.North -> Pair(coordinates.x, if (coordinates.y == grid.height - 1) 0 else coordinates.y + 1)
             Direction.East -> Pair(if (coordinates.x == grid.width - 1) 0 else coordinates.x + 1, coordinates.y)
             Direction.South -> Pair(coordinates.x, if (coordinates.y == 0) grid.height - 1 else coordinates.y - 1)

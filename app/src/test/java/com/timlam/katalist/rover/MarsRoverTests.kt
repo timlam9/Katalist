@@ -7,7 +7,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(JUnitParamsRunner::class)
-class RoverTests {
+class MarsRoverTests {
 
     private val rover = MarsRover()
 
@@ -76,7 +76,7 @@ class RoverTests {
 
     @Test
     fun `adds a zero prefix when finding an obstacle on a move command`() {
-        val rover = MarsRover(Grid(obstacles = listOf(MarsRover.Coordinates(0, 3))))
+        val rover = MarsRover(Grid(obstacles = listOf(Coordinates(0, 3))))
         val finalPosition = rover.execute("MMM")
 
         assertEquals("0:0:2:N", finalPosition)
