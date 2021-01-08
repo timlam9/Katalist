@@ -22,15 +22,9 @@ class MarsRover(private val grid: Grid = Grid()) {
 
     fun execute(command: String): String {
         command.forEach { singleCommand ->
-            coordinates = when (singleCommand) {
-                RIGHT_COMMAND -> {
-                    direction = Direction.values()[findIndex(true)]
-                    coordinates
-                }
-                LEFT_COMMAND -> {
-                    direction = Direction.values()[findIndex(false)]
-                    coordinates
-                }
+            when (singleCommand) {
+                RIGHT_COMMAND -> direction = Direction.values()[findIndex(true)]
+                LEFT_COMMAND -> direction = Direction.values()[findIndex(false)]
                 else -> move()
             }
         }
@@ -46,7 +40,7 @@ class MarsRover(private val grid: Grid = Grid()) {
         }
     }
 
-    private fun move(): Coordinates {
+    private fun move() {
         val (x, y) = when (direction) {
             Direction.North -> Pair(coordinates.x, if (coordinates.y == grid.height - 1) 0 else coordinates.y + 1)
             Direction.East -> Pair(if (coordinates.x == grid.width - 1) 0 else coordinates.x + 1, coordinates.y)
@@ -54,11 +48,11 @@ class MarsRover(private val grid: Grid = Grid()) {
             Direction.West -> Pair(if (coordinates.x == 0) grid.width - 1 else coordinates.x - 1, coordinates.y)
         }
 
-        return if (grid.isFreeSpot(x, y)) {
-            coordinates.copy(x = x, y = y)
+        if (grid.isFreeSpot(x, y)) {
+            coordinates = coordinates.copy(x = x, y = y)
+            obstaclePrefix = ""
         } else {
             obstaclePrefix = "0:"
-            coordinates
         }
     }
 
