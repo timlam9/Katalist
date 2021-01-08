@@ -2,13 +2,9 @@ package com.timlam.katalist.rover
 
 data class Coordinates(
     val x: Int = 0,
-    val y: Int = 0,
-    val foundObstacle: Boolean = false
+    val y: Int = 0
 ) {
 
-    fun currentPosition(direction: Char): String {
-        val obstacle = if (foundObstacle) "0:" else ""
-        return "$obstacle$x:$y:$direction"
-    }
+    fun currentPosition(direction: Char, obstaclePrefix: String) = "$obstaclePrefix$x:$y:$direction"
 
 }

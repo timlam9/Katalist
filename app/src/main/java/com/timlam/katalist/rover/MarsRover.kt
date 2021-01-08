@@ -18,6 +18,7 @@ class MarsRover(private val grid: Grid = Grid()) {
 
     private var coordinates = Coordinates()
     private var direction = Direction.North
+    private var obstaclePrefix = ""
 
     fun execute(command: String): String {
         command.forEach { singleCommand ->
@@ -34,7 +35,7 @@ class MarsRover(private val grid: Grid = Grid()) {
             }
         }
 
-        return coordinates.currentPosition(direction.name.first())
+        return coordinates.currentPosition(direction.name.first(), obstaclePrefix)
     }
 
     private fun findIndex(clockWise: Boolean): Int {
@@ -53,7 +54,12 @@ class MarsRover(private val grid: Grid = Grid()) {
             Direction.West -> Pair(if (coordinates.x == 0) grid.width - 1 else coordinates.x - 1, coordinates.y)
         }
 
-        return if (grid.isFreeSpot(x, y)) coordinates.copy(x = x, y = y) else coordinates.copy(foundObstacle = true)
+        return if (grid.isFreeSpot(x, y)) {
+            coordinates.copy(x = x, y = y)
+        } else {
+            obstaclePrefix = "0:"
+            coordinates
+        }
     }
 
 }
