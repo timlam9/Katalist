@@ -1,4 +1,4 @@
-package com.timlam.katalist.enchanting
+package com.timlam.katalist.exercises.enchanting
 
 class Durance(
     private val dagger: Dagger,

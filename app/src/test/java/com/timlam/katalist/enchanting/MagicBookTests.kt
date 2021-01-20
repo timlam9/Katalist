@@ -1,5 +1,8 @@
 package com.timlam.katalist.enchanting
 
+import com.timlam.katalist.exercises.enchanting.Dagger
+import com.timlam.katalist.exercises.enchanting.Enchantment
+import com.timlam.katalist.exercises.enchanting.MagicBook
 import org.junit.Assert
 import org.junit.Test
 

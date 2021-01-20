@@ -1,4 +1,4 @@
-package com.timlam.katalist.rover
+package com.timlam.katalist.exercises.enchanting.rover
 
 data class Coordinates(
     val x: Int = 0,

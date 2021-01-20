@@ -1,5 +1,8 @@
 package com.timlam.katalist.rover
 
+import com.timlam.katalist.exercises.enchanting.rover.Coordinates
+import com.timlam.katalist.exercises.enchanting.rover.Grid
+import com.timlam.katalist.exercises.enchanting.rover.MarsRover
 import junitparams.JUnitParamsRunner
 import junitparams.Parameters
 import org.junit.Assert.assertEquals

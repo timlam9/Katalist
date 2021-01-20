@@ -1,5 +1,9 @@
 package com.timlam.katalist.enchanting
 
+import com.timlam.katalist.exercises.enchanting.Dagger
+import com.timlam.katalist.exercises.enchanting.Durance
+import com.timlam.katalist.exercises.enchanting.Enchantment
+import com.timlam.katalist.exercises.enchanting.MagicBook
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.assertEquals

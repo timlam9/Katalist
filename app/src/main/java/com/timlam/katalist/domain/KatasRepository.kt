@@ -140,6 +140,63 @@ object KatasRepository {
                     "\n" +
                     "The rover receives a char array of commands e.g. RMMLM and returns the finishing point after the moves e.g. 2:1:N\n" +
                     "The rover wraps around if it reaches the end of the grid."
+
+        ),
+        Kata(
+            title = "Tennis",
+            image = R.drawable.tennis,
+            info = "This kata is well suited to developers who have some familiarity with TDD basics and want to improve their algorithm design skills. It is a stateless, algorithmic version of the classic Tennis kata (where the program also holds the current score and updates its state when a player scores a new point).\n" +
+                    "\n" +
+                    "Both Tennis and Bowling can also be done holding state (e.g. with a scorePoint() method of some sort). However, when learning pure algorithmic TDD, we prefer to stay stateless as the added difficulty of maintaining state can distract from the main learning points.\n" +
+                    "\n" +
+                    "Write a program that accepts two integers, and converts them to a tennis-style score.\n" +
+                    "\n" +
+                    "The scoring rules of tennis (per Wikipedia) are as follows:\n" +
+                    "\n" +
+                    "A game is won by the first player to have won at least four points in total and at least two points more than the opponent.\n" +
+                    "Scores from zero to three points are described as “love”, “fifteen”, “thirty”, and “forty” respectively.\n" +
+                    "If at least three points have been scored by each player and the scores are equal, the score is “deuce”.\n" +
+                    "If at least three points have been scored by each player and a player has one more point than his opponent, the score is “advantage” for the player in the lead.\n" +
+                    "Start with with the following interface:\n" +
+                    "\n" +
+                    "public class TennisScoreCalculator {\n" +
+                    "    public string Score(int player1Points, int player2Points);\n" +
+                    "}\n" +
+                    "Credits: http://codingdojo.org/kata/Tennis/\n" +
+                    "\n"
+        ),
+        Kata(
+            title = "Diamond",
+            image = R.drawable.diamond,
+            info = "This project contains sourcefiles and a skeleton for a solution to the Diamond Kata. You can of course just code this kata from scratch in any way you wish. This repo will help you to explore two different approaches to the problem - an interative approach, where you 'recycle' test cases, and an incremental approach, where all test cases are valid for the full solution.\n" +
+                    "\n" +
+                    "For more discussion of 'test recycling' see Seb Rose's blog post\n" +
+                    "\n" +
+                    "So far I have starting code for the problem in Scala, Java and Python. The original version was the Scala, so please be forgiving if I have used Scala idioms or generally translated it badly into the other languages. I welcome pull requests with improvements and/or translations to more programming languages.\n" +
+                    "\n" +
+                    "Kata Description\n" +
+                    "(this description is copied from http://cyber-dojo.org)\n" +
+                    "\n" +
+                    "Given a letter print a diamond starting with 'A' with the supplied letter at the widest point.\n" +
+                    "\n" +
+                    "For example: print-diamond 'E' prints\n" +
+                    "\n" +
+                    "    A\n" +
+                    "   B B\n" +
+                    "  C   C\n" +
+                    " D     D\n" +
+                    "E       E\n" +
+                    " D     D\n" +
+                    "  C   C\n" +
+                    "   B B\n" +
+                    "    A\n" +
+                    "For example: print-diamond 'C' prints\n" +
+                    "\n" +
+                    "  A\n" +
+                    " B B\n" +
+                    "C   C\n" +
+                    " B B\n" +
+                    "  A"
         )
     )
 

@@ -1,4 +1,4 @@
-package com.timlam.katalist.enchanting
+package com.timlam.katalist.exercises.enchanting
 
 data class Dagger(val enchantment: Enchantment? = null) {
 

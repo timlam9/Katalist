@@ -1,4 +1,4 @@
-package com.timlam.katalist.enchanting
+package com.timlam.katalist.exercises.enchanting
 
 class MagicBook(private val shouldRevertToOriginalForm: () -> Boolean = { (1..10).random() == 5 }) {
 

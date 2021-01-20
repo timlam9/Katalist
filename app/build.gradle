@@ -80,4 +80,8 @@ dependencies {
     def cardview_version = "1.0.0"
     implementation "androidx.cardview:cardview:$cardview_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.21"
+
+    // Kotest
+    def kotest_version = "4.1.4"
+//    testImplementation "io.kotest:kotest-assertions-core-jvm:$kotest_version"
 }
