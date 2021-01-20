@@ -74,7 +74,7 @@ class TennisScoreCalculatorTest {
 
     @Test
     fun `given player 1 and player 2 score is at least 3 points, when second player scores a point, then player 2 score is advantage`() {
-        val result = tennisScoreCalculator.score(4, 6)
+        val result = tennisScoreCalculator.score(4, 5)
 
         assertEquals(result, "forty-advantage")
     }

@@ -9,7 +9,7 @@ class TennisScoreCalculator {
 
     }
 
-    private val possibleScores = mapOf<Int, String>(
+    private val possibleScores = mapOf(
         0 to "love",
         1 to "fifteen",
         2 to "thirty",
@@ -21,11 +21,11 @@ class TennisScoreCalculator {
         val scoreResult2 = resolvePlayerPoints(player2Points)
 
         return when {
+            player1Points >= 4 && player1Points - player2Points >= 2 -> PLAYER_1_WON
+            player2Points >= 4 && player2Points - player1Points >= 2 -> PLAYER_2_WON
             player1Points >= 3 && player1Points == player2Points -> "deuce"
             player1Points > player2Points -> "advantage-forty"
             player1Points < player2Points -> "forty-advantage"
-            player1Points >= 4 && player1Points - player2Points >= 2 -> PLAYER_1_WON
-            player2Points >= 4 && player2Points - player1Points >= 2 -> PLAYER_2_WON
             else -> "$scoreResult1-$scoreResult2"
         }
     }
